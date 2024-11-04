@@ -9,6 +9,17 @@
  * - Click to launch the tongue
  * - Catch flies
  * 
+ * 
+ * Additions to the game - Bianca Granata
+ * 1. frog jumps with spacebar
+ * 2. increase of the flies
+ * 3.scoreboard
+ * 4.if the frog misses catching the fly, the background changes
+ * 5. deduction of points if misses.
+ * 
+ * 
+ * 
+ * 
  * Made with p5
  * https://p5js.org/
  */
@@ -163,7 +174,7 @@ function checkTongueFlyOverlap() {
     // Get distance from tongue to fly
     const d = dist(frog.tongue.x, frog.tongue.y, fly.x, fly.y);
     // Check if it's an overlap
-    const eaten = (d < frog.tongue.size/2 + fly.size/2);
+    const eaten = (d < frog.tongue.size / 2 + fly.size / 2);
     if (eaten) {
         // Reset the fly
         resetFly();
