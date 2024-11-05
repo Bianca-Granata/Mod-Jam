@@ -12,7 +12,7 @@
  * 
  * Additions to the game - Bianca Granata
  * 1. frog jumps with spacebar
- * 2. increase of the flies
+ * 2. increase of frog size
  * 3.scoreboard
  * 4.if the frog misses catching the fly, the background changes
  * 5. deduction of points if misses.
@@ -190,4 +190,15 @@ function mousePressed() {
     if (frog.tongue.state === "idle") {
         frog.tongue.state = "outbound";
     }
+}
+//increase in fly size
+function mouseWheel(event) {
+    if (event.delta > 0) {
+        fly.size += 2;
+    }
+    else {
+        fly.size -= 2;
+    }
+
+
 }
