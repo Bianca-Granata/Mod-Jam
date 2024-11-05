@@ -67,7 +67,7 @@ function setup() {
 }
 
 function draw() {
-    background("#87ceeb");
+    background("#1F386B");
     moveFly();
     drawFly();
     moveFrog();
@@ -167,14 +167,14 @@ function drawFrog() {
 
     // Draw the rest of the tongue
     push();
-    stroke("#ff0000");
+    stroke("#FF0055");
     strokeWeight(frog.tongue.size);
     line(frog.tongue.x, frog.tongue.y, frog.body.x, frog.body.y);
     pop();
 
     // Draw the frog's body
     push();
-    fill("#00ff00");
+    fill("#3C5F20");
     noStroke();
     ellipse(frog.body.x, frog.body.y, frog.body.size);
     pop();
