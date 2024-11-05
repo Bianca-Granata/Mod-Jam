@@ -50,8 +50,7 @@ const frog = {
 const fly = {
     x: 0,
     y: 200, // Will be random
-    minSize: 10,
-    maxSize: 50,
+    size: 10,
     speed: 3
 };
 
@@ -67,7 +66,7 @@ function setup() {
 }
 
 function draw() {
-    background("#1F386B");
+    background("#1A417C");
     moveFly();
     drawFly();
     moveFrog();
@@ -99,7 +98,6 @@ function drawFly() {
 
 
 }
-//increase in the fly size
 function mouseWheel(event) {
     if (event.delta > 0) {
         fly.size += 2;
@@ -160,14 +158,14 @@ function moveTongue() {
 function drawFrog() {
     // Draw the tongue tip
     push();
-    fill("#ff0000");
+    fill("#F70848");
     noStroke();
     ellipse(frog.tongue.x, frog.tongue.y, frog.tongue.size);
     pop();
 
     // Draw the rest of the tongue
     push();
-    stroke("#FF0055");
+    stroke("#F70848");
     strokeWeight(frog.tongue.size);
     line(frog.tongue.x, frog.tongue.y, frog.body.x, frog.body.y);
     pop();
