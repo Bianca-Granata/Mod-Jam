@@ -51,9 +51,13 @@ const fly = {
     x: 0,
     y: 200, // Will be random
     size: 10,
+    //This was the issue before ->
+    maxSize: 30,
     speed: 3
 };
 
+//creating the scoreboard
+var scoreboard = 0;
 /**
  * Creates the canvas and initializes the fly
  */
@@ -64,7 +68,7 @@ function setup() {
     // Give the fly its first random position
     resetFly();
 }
-
+//drawing the features unto the canvas
 function draw() {
     background("#1A417C");
     moveFly();
@@ -73,6 +77,10 @@ function draw() {
     moveTongue();
     drawFrog();
     checkTongueFlyOverlap();
+    textSize(40);
+    text(scoreboard, 350, 40);
+
+
 }
 
 
