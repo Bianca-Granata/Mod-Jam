@@ -11,11 +11,11 @@
  * 
  * 
  * Additions to the game - Bianca Granata
- * 1. frog jumps with spacebar
- * 2. increase of frog size
- * 3.scoreboard
- * 4.if the frog misses catching the fly, the background changes
- * 5. deduction of points if misses.
+ * 1. frog jumps with spacebar (events)
+ * 2. increase of fly size with mouse wheel (events)
+ * 3.scoreboard (variables)
+ * 4.if the frog misses catching the fly, the background changes (variables)
+ * 5. if the flys get caught the speed of the fly increases (conditionals)
  * 
  * 
  * 
@@ -59,6 +59,7 @@ const fly = {
  */
 function setup() {
     createCanvas(640, 480);
+    background();
 
     // Give the fly its first random position
     resetFly();
@@ -72,6 +73,16 @@ function draw() {
     moveTongue();
     drawFrog();
     checkTongueFlyOverlap();
+    scoreboard();
+}
+
+
+function scoreboard() {
+    push();
+    stroke(2);
+    rect();
+    pop()
+
 }
 
 /**
@@ -200,5 +211,10 @@ function mouseWheel(event) {
         fly.size -= 2;
     }
 
+
+}
+// frog jumping with the letter 'a'
+function keyPressed() {
+    if key === ('a');
 
 }
