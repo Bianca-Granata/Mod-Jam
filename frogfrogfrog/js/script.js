@@ -50,7 +50,8 @@ const frog = {
 const fly = {
     x: 0,
     y: 200, // Will be random
-    size: 10,
+    minSize: 10,
+    maxSize: 50,
     speed: 3
 };
 
@@ -59,7 +60,7 @@ const fly = {
  */
 function setup() {
     createCanvas(640, 480);
-    background();
+
 
     // Give the fly its first random position
     resetFly();
@@ -73,22 +74,10 @@ function draw() {
     moveTongue();
     drawFrog();
     checkTongueFlyOverlap();
-    scoreboard();
 }
 
 
-function scoreboard() {
-    push();
-    stroke(2);
-    rect();
-    pop()
 
-}
-
-/**
- * Moves the fly according to its speed
- * Resets the fly if it gets all the way to the right
- */
 function moveFly() {
     // Move the fly
     fly.x += fly.speed;
@@ -107,6 +96,19 @@ function drawFly() {
     fill("#000000");
     ellipse(fly.x, fly.y, fly.size);
     pop();
+
+
+}
+//increase in the fly size
+function mouseWheel(event) {
+    if (event.delta > 0) {
+        fly.size += 2;
+    }
+    else {
+        fly.size -= 2;
+    }
+
+
 }
 
 /**
@@ -202,19 +204,5 @@ function mousePressed() {
         frog.tongue.state = "outbound";
     }
 }
-//increase in fly size
-function mouseWheel(event) {
-    if (event.delta > 0) {
-        fly.size += 2;
-    }
-    else {
-        fly.size -= 2;
-    }
 
 
-}
-// frog jumping with the letter 'a'
-function keyPressed() {
-    if key === ('a');
-
-}
