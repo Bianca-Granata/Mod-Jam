@@ -64,6 +64,7 @@ var scoreboard = 0;
 function setup() {
     createCanvas(640, 480);
 
+
     //fix this->
     //window.addEventListener("keydown", changeBG)
 
@@ -72,6 +73,7 @@ function setup() {
 }
 //drawing the features unto the canvas
 function draw() {
+    //default background color
     background("#1A417C");
     moveFly();
     drawFly();
@@ -197,6 +199,9 @@ function checkTongueFlyOverlap() {
     // Check if it's an overlap
     const eaten = (d < frog.tongue.size / 2 + fly.size / 2);
     if (eaten) {
+        scoreboard = scoreboard + 1;
+
+        //scoreboard = scoreboard + 1;
         // Reset the fly
         resetFly();
         // Bring back the tongue
@@ -212,9 +217,5 @@ function mousePressed() {
         frog.tongue.state = "outbound";
     }
 }
-function scoreNumbers() {
-    if (tongue.eaten + 1) {
-        scoreboard = scoreboard + 1;
-    }
-}
+
 
