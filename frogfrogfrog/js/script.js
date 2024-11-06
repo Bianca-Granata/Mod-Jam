@@ -11,11 +11,11 @@
  * 
  * 
  * Additions to the game - Bianca Granata
- * 1. frog jumps with spacebar (events)
- * 2. increase of fly size with mouse wheel (events)
- * 3.scoreboard (variables)
- * 4.if the frog misses catching the fly, the background changes (variables)
- * 5. if the flys get caught the speed of the fly increases (conditionals)
+ * 1. frog jumps with spacebar
+ * 2. increase of fly size with mouse wheel
+ * 3.scoreboard
+ * 4. change in background color by clicking mouse (day and night)
+ * 5. instructions
  * 
  * 
  * 
@@ -50,9 +50,9 @@ const frog = {
 const fly = {
     x: 0,
     y: 200, // Will be random
-    size: 10,
+    size: 5,
     //This was the issue before ->
-    maxSize: 30,
+    maxSize: 20,
     speed: 3
 };
 
@@ -64,6 +64,8 @@ var scoreboard = 0;
 function setup() {
     createCanvas(640, 480);
 
+    //fix this->
+    //window.addEventListener("keydown", changeBG)
 
     // Give the fly its first random position
     resetFly();
@@ -77,13 +79,15 @@ function draw() {
     moveTongue();
     drawFrog();
     checkTongueFlyOverlap();
-    textSize(40);
+    //instructions of the game and its features
+    textSize(15);
     text(scoreboard, 350, 40);
+    text("Catch as many flies", 50, 40);
+    text("Click to change to daytime", 50, 60);
+    text("Use mouse wheel to increase fly size", 50, 80);
 
 
 }
-
-
 
 function moveFly() {
     // Move the fly
@@ -113,8 +117,6 @@ function mouseWheel(event) {
     else {
         fly.size -= 2;
     }
-
-
 }
 
 /**
@@ -210,5 +212,9 @@ function mousePressed() {
         frog.tongue.state = "outbound";
     }
 }
-
+function scoreNumbers() {
+    if (tongue.eaten + 1) {
+        scoreboard = scoreboard + 1;
+    }
+}
 
