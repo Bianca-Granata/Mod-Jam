@@ -11,11 +11,12 @@
  * 
  * 
  * Additions to the game - Bianca Granata
- * 1. frog jumps with spacebar
- * 2. increase of fly size with mouse wheel
- * 3.scoreboard
- * 4. change in background color by clicking mouse (day and night)
- * 5. instructions
+ *
+ *  increase of fly size with mouse wheel
+ * scoreboard
+ *  change in color by clicking s key (day and night)
+ *  instructions
+ * frog jumps with spacebar
  * 
  * 
  * 
@@ -56,17 +57,30 @@ const fly = {
     speed: 3
 };
 
+const sunMoon = {
+    // Position
+    x: 500,
+    y: 100,
+    // Size
+    size: 100,
+    // fill
+    fill: "#ffffff",
+    // fills
+    fills: {
+        white: "#ffffff",
+        yellow: "#FFF169",
+
+    }
+}
+
 //creating the scoreboard
 var scoreboard = 0;
+
 /**
  * Creates the canvas and initializes the fly
  */
 function setup() {
     createCanvas(640, 480);
-
-
-    //fix this->
-    //window.addEventListener("keydown", changeBG)
 
     // Give the fly its first random position
     resetFly();
@@ -75,6 +89,8 @@ function setup() {
 function draw() {
     //default background color
     background("#1A417C");
+    //background("#83B2F9");
+    //83B2F9, daytime color
     moveFly();
     drawFly();
     moveFrog();
@@ -85,12 +101,29 @@ function draw() {
     textSize(15);
     text(scoreboard, 350, 40);
     text("Catch as many flies", 50, 40);
-    text("Click to change to daytime", 50, 60);
+    text("Click to reach fly", 50, 60);
     text("Use mouse wheel to increase fly size", 50, 80);
+    text("press S to change moon to sun (daytime)", 50, 100);
 
+    //draw moon/ sun
+    push();
+    noStroke();
+    fill(sunMoon.fill);
+    ellipse(sunMoon.x, sunMoon.y, sunMoon.size);
+    pop();
+}
+// meant to change the sun/moon color by pressing "s"
+function keyPressed(event) {
+    if (event.key === "s") {
+        sunMoon.fill = sunMoon.fills.yellow;
+    }
 
 }
-
+function keyReleased() {
+    if (event.key === "s") {
+        sunMoon.fill = sunMoon.fills.white;
+    }
+}
 function moveFly() {
     // Move the fly
     fly.x += fly.speed;
@@ -112,6 +145,7 @@ function drawFly() {
 
 
 }
+//allows for the user to increase and decrease the size of the fly using the mousewheel
 function mouseWheel(event) {
     if (event.delta > 0) {
         fly.size += 2;
@@ -134,6 +168,7 @@ function resetFly() {
  */
 function moveFrog() {
     frog.body.x = mouseX;
+
 }
 
 /**
@@ -199,9 +234,9 @@ function checkTongueFlyOverlap() {
     // Check if it's an overlap
     const eaten = (d < frog.tongue.size / 2 + fly.size / 2);
     if (eaten) {
+        //each time the frog eats a fly, a point is added to the scoreboard
         scoreboard = scoreboard + 1;
 
-        //scoreboard = scoreboard + 1;
         // Reset the fly
         resetFly();
         // Bring back the tongue
